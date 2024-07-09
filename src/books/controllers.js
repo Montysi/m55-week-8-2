@@ -30,7 +30,24 @@ const getAllBooks = async (req, res) => {
     }
 }
 
+const getBookByAuthor = async (req, res) => {
+    try {
+        
+        const authorName = req.body.author;
+
+        const books = await Book.findAll({ where: { author: authorName }});
+
+        res.status(200).json({ message: "success", books: books})
+
+    } catch (error) {
+        res.status(501).json({ message: error.message, error: error });
+    }
+}
+
+
+
 module.exports = {
     addBook: addBook,
     getAllBooks: getAllBooks,
+    getBookByAuthor: getBookByAuthor
 }
