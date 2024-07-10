@@ -45,6 +45,17 @@ const getBookByAuthor = async (req, res) => {
 }
 
 
+const updateBookByTitle = async (req, res) => {
+    try {
+        
+
+
+        res.status(200).json({ message: "success", books: books });
+    } catch (error) {
+        res.status(501).json({ message: error.message, error: error });
+    }
+}
+
 
 module.exports = {
     addBook: addBook,
