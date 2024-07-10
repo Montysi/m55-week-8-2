@@ -56,9 +56,24 @@ const updateBookByTitle = async (req, res) => {
     }
 }
 
+const deleteBookByTitle = async (req, res) => {
+    try {
+
+        const title = req.body.title;
+        
+        const books = await Book.destroy({ where: { title: title } });
+
+        res.status(200).json({ message: `${title} successfully deleted!`, books: books});
+
+    } catch (error) {
+        res.status(501).json({ message: error.message, error: error });
+    }
+}
+
 
 module.exports = {
     addBook: addBook,
     getAllBooks: getAllBooks,
-    getBookByAuthor: getBookByAuthor
+    getBookByAuthor: getBookByAuthor,
+    deleteBookByTitle: deleteBookByTitle,
 }
