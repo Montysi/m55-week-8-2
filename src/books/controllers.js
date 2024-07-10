@@ -70,10 +70,24 @@ const deleteBookByTitle = async (req, res) => {
     }
 }
 
+const deleteAll = async (req, res) => {
+    try {
+
+        const books = await Book.destroy({ where: {} });
+
+        res.status(200).json({ message: `All books successfully deleted!`, books: books });
+
+        
+    } catch (error) {
+        res.status(501).json({ message: error.message, error: error });
+    }
+}
+
 
 module.exports = {
     addBook: addBook,
     getAllBooks: getAllBooks,
     getBookByAuthor: getBookByAuthor,
     deleteBookByTitle: deleteBookByTitle,
+    deleteAll: deleteAll,
 }
