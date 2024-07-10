@@ -5,11 +5,10 @@ const sequelize = require("../db/connection");
 const Author = sequelize.define(
   "Author",
   {
-    author: {
+    authorName: {
       type: DataTypes.STRING,
-      dafaultValue: "Written by some author",
+      allowNull: false,
     },
-
   },
   { timestamps: false }
 );
