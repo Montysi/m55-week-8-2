@@ -19,8 +19,13 @@ app.use("/authors", authorRouter);
 const syncTables = () => {
 // Model.sync({ alter: true })
 
-    Author.sync();
-    Book.sync();
+    Author.hasMany(Book);
+    Book.belongsTo(Author);
+
+    Author.sync({ alter: true });
+    Book.sync({ alter: true});
+
+    
 };
 
 app.get("/health", (req, res) => {
