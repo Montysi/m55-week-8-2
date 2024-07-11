@@ -1,22 +1,19 @@
 const Book = require("./model");
 
+
+
+
 const addBook = async (req, res) => {
-    console.log("req.body:", req.body);
-    try {
+  console.log("req: ", req.body);
+  try {
+   
+    const book = await Book.create(req.body);
 
-        const book = await Book.create({
-            title: req.body.title,
-            author: req.body.author,
-            genre: req.body.genre,
-        });
-
-        res.status(201).json({ message: "success", book: book}) ;
-
-    } catch (error) {
-        res.status(501).json({ message: error.message, error: error});
-    }
+    res.status(201).json({ message: "success", book: book });
+  } catch (error) {
+    res.status(501).json({ message: error.message, error: error });
+  }
 };
-
 
 const getAllBooks = async (req, res) => {
     try {
