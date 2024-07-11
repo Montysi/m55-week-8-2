@@ -4,6 +4,7 @@ const express = require("express");
 const port = process.env.PORT || 5001;
 
 const Book = require("./books/model");
+const Author = require("./authors/model");
 
 const bookRouter = require("./books/routes");
 
@@ -14,6 +15,9 @@ app.use(express.json());
 app.use("/books", bookRouter);
 
 const syncTables = () => {
+// Model.sync({ alter: true })
+
+    Author.sync();
     Book.sync();
 };
 
