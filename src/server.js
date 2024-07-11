@@ -22,8 +22,9 @@ const syncTables = () => {
     Author.hasMany(Book);
     Book.belongsTo(Author);
 
+    
+    Book.sync({ alter: true });
     Author.sync({ alter: true });
-    Book.sync({ alter: true});
 
     
 };
