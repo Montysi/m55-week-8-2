@@ -12,7 +12,7 @@ bookRouter.post("/addBook", addBook);
 
 bookRouter.get("/getAllBooks", getAllBooks);
 
-bookRouter.get("/getBookByAuthor", getBookByAuthor);
+bookRouter.get("/getBookByAuthor/:author", getBookByAuthor);
 
 bookRouter.delete("/deleteBookByTitle", deleteBookByTitle);
 

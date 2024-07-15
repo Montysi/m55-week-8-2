@@ -1,8 +1,6 @@
 const Book = require("./model");
 
 
-
-
 const addBook = async (req, res) => {
   console.log("req: ", req.body);
   try {
@@ -27,12 +25,14 @@ const getAllBooks = async (req, res) => {
     }
 }
 
+
+// returns empty array
 const getBookByAuthor = async (req, res) => {
     try {
-        
-        const authorName = req.body.author;
 
-        const books = await Book.findAll({ where: { author: authorName }});
+        console.log("req.params: ", req.params);
+
+        const books = await Book.findAll({where: { title: req.params.author } });
 
         res.status(200).json({ message: "success", books: books})
 
